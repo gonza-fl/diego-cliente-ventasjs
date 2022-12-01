@@ -6,6 +6,7 @@ const legajoInput = document.getElementById('legajo');
 const nombreInput = document.getElementById('nombre');
 const vendedorInput = document.getElementById('vendedor');
 const productoInput = document.getElementById('producto');
+const precioInput = document.getElementById('precio');
 
 let base = [
   { nombre: 'gonzalo', legajo: '12347' },
@@ -13,9 +14,9 @@ let base = [
   { nombre: 'gonzalo', legajo: '12349' },
 ];
 let ventas = [
-  { producto: 'prueba1', vendedor: '12347' },
-  { producto: 'prueba2', vendedor: '12348' },
-  { producto: 'prueba3', vendedor: '12349' },
+  { producto: 'prueba1', vendedor: '12347', precio: '300' },
+  { producto: 'prueba2', vendedor: '12348', precio: '300' },
+  { producto: 'prueba3', vendedor: '12349', precio: '300' },
 ];
 
 formulario.addEventListener('submit', guardar);
@@ -25,9 +26,10 @@ function Vendedor(legajo, nombre) {
   this.nombre = nombre;
   this.legajo = legajo;
 }
-function Ventas(vendedor, producto) {
+function Ventas(vendedor, producto, precio) {
   this.producto = producto;
   this.vendedor = vendedor;
+  this.precio = precio;
 }
 
 function guardar(e) {
@@ -41,7 +43,7 @@ function guardar(e) {
 }
 function guardarVentas(e) {
   e.preventDefault();
-  const nuevaVenta = new Ventas(vendedorInput.value, productoInput.value);
+  const nuevaVenta = new Ventas(vendedorInput.value, productoInput.value, precioInput.value);
   ventas.push(nuevaVenta);
   const venta = modeloVentas(nuevaVenta);
   tablaVentas.appendChild(venta);
@@ -64,12 +66,18 @@ function eliminarVentas(e) {
 
 function render() {
   const fragment = new DocumentFragment();
+  const fragmentVentas = new DocumentFragment();
 
   base.forEach((vendedor) => {
     const tr = modeloVendedor(vendedor);
     fragment.appendChild(tr);
   });
   tabla.appendChild(fragment);
+  ventas.forEach((venta) => {
+    const tr = modeloVentas(venta);
+    fragmentVentas.appendChild(tr);
+  });
+  tablaVentas.appendChild(fragmentVentas);
 }
 
 function modeloVendedor(vendedor) {
@@ -99,17 +107,20 @@ function modeloVentas(venta) {
   btnModificar.textContent = 'modificar';
   btnEliminar.onclick = eliminarVentas;
   btnModificar.onclick = modificar;
-  const tdCod = document.createElement('td');
-  const tdNom = document.createElement('td');
+  const tdVendedor = document.createElement('td');
+  const tdProducto = document.createElement('td');
+  const tdPrecio = document.createElement('td');
   const tdAcc = document.createElement('td');
   const tr = document.createElement('tr');
   btnEliminar.id = `${venta.vendedor}`;
   btnModificar.id = `${venta.vendedor}`;
   tr.id = `${venta.vendedor}`;
-  tdNom.textContent = venta.producto;
-  tdCod.textContent = venta.vendedor;
+  tdProducto.textContent = venta.producto;
+  tdVendedor.textContent = venta.vendedor;
+  tdPrecio.textContent = venta.precio;
+  
   tdAcc.append(btnEliminar, btnModificar);
-  tr.append(tdCod, tdNom, tdAcc);
+  tr.append(tdProducto, tdVendedor, tdPrecio, tdAcc);
   return tr;
 }
 
