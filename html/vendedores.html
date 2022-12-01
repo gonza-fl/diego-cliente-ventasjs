@@ -36,6 +36,37 @@
 
     <hr size="1px" color="gray" />
     <section class="contenedor_formulario">
+        <h6 class="subtitulo">Ventas</h6>
+        <form id="formVentas">
+
+            <input type="text" class="campo" id="vendedor" name="vendedor" placeholder="vendedor" required>
+            <input type="text" class="campo" id="producto" name="producto" placeholder="producto" required>
+
+
+            <div class="div_boton">
+                <button class="boton">Agregar</button>
+
+            </div> <br>
+
+        </form>
+    </section>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>producto</th>
+                    <th>Vendedor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaVentas">
+
+            </tbody>
+
+        </table>
+
+    </section>
+    <section class="contenedor_formulario">
         <h6 class="subtitulo">Vendedor</h6>
         <form id="formulario">
 
