@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-widt initial-scale=1.0">
+
+    <title>Sistema de ventas</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <p>Sistema de Ventas</p>
+            </div>
+            <ul class="menu">
+                <li class="nav_items">
+                    <a href="index.html" class="nav_item">Ventas</a>
+                </li>
+                <li>
+                    <a href="vendedores.html" class="nav_item">Vendedores</a>
+                </li>
+                <li>
+                    <a href="productos.html" class="nav_item">Productos</a>
+                </li>
+                <li>
+                    <a href="" class="nav_item">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </header> <br><br><br>
+    <hr size="1px" color="gray" />
+
+
+    <hr size="1px" color="gray" />
+    <section class="contenedor_formulario">
+        <h6 class="subtitulo">Formulario de Contacto</h6>
+        <form id="formulario">
+
+            <input type="text" class="campo" id="nombre" name="nombre" placeholder="Nombre" required>
+            <input type="text" class="campo" id="campo" name="apellido" placeholder="Apellido" required>
+            <input type="text" class="campo" id="telefono" name="telefono" placeholder="Telefono" required>
+            <input type="email" class="campo"id="email" name="email" placeholder="E-mail" required>
+            <input type="text" class="campo" id="campo" name="comentarios" placeholder="Comentarios" required>
+            <div class="div_boton">
+                <button class="boton" onclick="enviar()">Enviar</button>
+            </div> <br>
+
+
+        </form>
+    </section>
+    <footer class="footer">
+        <h3 class="footer__copyright">Derechos reservados &copy; Diego Buencuero</h3>
+    </footer>
+
+    <script src="/js/menu.js"></script>
+
+
+</body>
+
+</html>
